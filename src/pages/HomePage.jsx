@@ -1,333 +1,241 @@
-import React from 'react';
-import {
-    Box,
-    Container,
-    Typography,
-    Button,
-    Grid,
-    Stack,
-    IconButton,
-    Chip,
-} from '@mui/material';
-import {
-    GitHub,
-    LinkedIn,
-    Email,
-    KeyboardArrowDown,
-    Code,
-    Rocket,
-    BrushOutlined,
-} from '@mui/icons-material';
+import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
-import { keyframes } from '@mui/system';
+import BrowserFrame from '../components/HeroSection/BrowserFrame';
+import AnimatedText from '../components/HeroSection/AnimatedText';
 
-import { useTheme, useMediaQuery } from '@mui/material';
-
-export default function Home() {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-    const scrollToSection = (id) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    const float = keyframes`
-  from { transform: translateY(0px); }
-  to   { transform: translateY(40px); }
-`;
-
-
+const HomePage = () => {
     return (
-        <Box
-            id="home"
-            sx={{
+        <>
 
-                display: 'flex',
-
-                alignItems: 'center',
-                position: 'relative',
-                overflow: 'hidden',
-                background: `linear-gradient(135deg, ${theme.palette.primary.dark}, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-            }}
-        >
-
-
-
-            {/* --- Content --- */}
-            <Container sx={{ position: 'relative', zIndex: 2 }}>
-                <Grid container spacing={6} alignItems="center" sx={{
+            <Box
+                sx={{
+                    minHeight: '100vh',
                     display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' }
-                }}>
-                    {/* Left Side */}
-                    <Grid item xs={12} md={6}>
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <Chip
-                                icon={<Code sx={{ color: 'white !important' }} />}
-                                label="Available for Freelance"
-                                sx={{
-                                    mb: 3,
-                                    bgcolor: 'rgba(255,255,255,0.15)',
-                                    color: 'white',
-                                    backdropFilter: 'blur(10px)',
-                                    fontWeight: 600,
-                                }}
-                            />
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: { xs: '80px 24px 80px', md: '80px 24px 80px' },
+                    position: 'relative',
+                    overflow: 'hidden',
+
+
+                    // ✅ Background image properties
+                    //backgroundImage: `url('/images/bg-image.webp')`,
+                    backgroundImage: `url('/images/section2.webp')`,
+                    backgroundSize: 'cover',        // Cover the entire Box
+                    backgroundPosition: 'center',   // Center the image
+                    backgroundRepeat: 'no-repeat',  // Avoid repeating
+                }}
+            >
+
+
+                <Container maxWidth="lg">
+                    <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
+                        {/* Left Content */}
+                        <Grid item xs={12} md={6}>
+                            <motion.div
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                                <Box
+                                    sx={{
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                        padding: '8px 16px',
+                                        background: '#FCFCF9',
+                                        border: '1px solid rgba(94, 82, 64, 0.2)',
+                                        borderRadius: '24px',
+                                        fontSize: '13px',
+                                        fontWeight: 500,
+                                        color: '#626C71',
+                                        marginBottom: 3,
+                                    }}
+                                >
+                                    <span className="material-icons" style={{ fontSize: 16 }}>circle</span>
+                                    Available for work
+                                </Box>
+                            </motion.div>
 
                             <Typography
-                                variant={isMobile ? 'h3' : 'h2'}
+                                variant="h1"
                                 sx={{
-                                    fontWeight: 800,
-                                    lineHeight: 1.2,
-                                    color: 'white',
-                                    mb: 1.5,
+                                    fontSize: { xs: '36px', sm: '48px', md: '64px' },
+                                    fontWeight: 700,
+                                    lineHeight: 1.1,
+                                    marginBottom: 3,
+                                    letterSpacing: '-1.5px',
+                                    color: '#13343B',
                                 }}
                             >
-                                Hi, I'm{' '}
+                                <AnimatedText text="Building" delay={0} />{' '}
                                 <Box
                                     component="span"
                                     sx={{
-                                        background:
-                                            'linear-gradient(90deg, #ffffff, rgba(255,255,255,0.7))',
+                                        background: 'linear-gradient(135deg, #21808D 0%, #13343B 100%)',
                                         WebkitBackgroundClip: 'text',
                                         WebkitTextFillColor: 'transparent',
+                                        backgroundClip: 'text',
+                                        backgroundSize: '200% 200%',
+                                        animation: 'gradientShift 4s ease infinite',
+                                        '@keyframes gradientShift': {
+                                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                                            '50%': { backgroundPosition: '100% 50%' },
+                                        },
                                     }}
                                 >
-                                    Vikram Singh Panwar
+                                    <AnimatedText text="Digital" delay={0.3} />
                                 </Box>
+                                <br />
+                                <AnimatedText text="Experiences" delay={0.6} />
                             </Typography>
 
-                            {/* Typewriter-style subtitle */}
-                            <Typography
-                                variant="h5"
-                                sx={{
-                                    color: 'rgba(255,255,255,0.85)',
-                                    mb: 3,
-                                    fontFamily: 'monospace',
-                                    borderRight: '2px solid white',
-                                    display: 'inline-block',
-                                    whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    animation: 'typing 3s steps(40, end), blink 1s step-end infinite alternate',
-                                    '@keyframes typing': {
-                                        from: { width: 0 },
-                                        to: { width: '100%' },
-                                    },
-                                    '@keyframes blink': {
-                                        from: { borderColor: 'transparent' },
-                                        to: { borderColor: 'white' },
-                                    },
-                                }}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                             >
-                                Frontend Developer • React Enthusiast • UI Engineer
-                            </Typography>
-
-                            <Typography
-                                variant="body1"
-                                sx={{
-                                    color: 'rgba(255,255,255,0.9)',
-                                    mb: 4,
-                                    maxWidth: 500,
-                                    lineHeight: 1.7,
-                                }}
-                            >
-                                I craft seamless, high-performance web experiences with React,
-                                Material-UI, and modern design principles. Let’s build something
-                                elegant and functional together.
-                            </Typography>
-
-                            {/* Feature Badges */}
-                            <Stack direction="row" flexWrap="wrap" gap={1.5} mb={4}>
-                                {[
-                                    { icon: <Code />, text: 'Clean Code' },
-                                    { icon: <Rocket />, text: 'High Performance' },
-                                    { icon: <BrushOutlined />, text: 'Modern Aesthetic' },
-                                ].map((f, i) => (
-                                    <Box
-                                        key={i}
-                                        sx={{
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: 1,
-                                            px: 2,
-                                            py: 1,
-                                            borderRadius: 2,
-                                            bgcolor: 'rgba(255,255,255,0.12)',
-                                            color: 'white',
-                                            backdropFilter: 'blur(6px)',
-                                        }}
-                                    >
-                                        {f.icon}
-                                        <Typography variant="body2" fontWeight={600}>
-                                            {f.text}
-                                        </Typography>
-                                    </Box>
-                                ))}
-                            </Stack>
-
-                            {/* Buttons */}
-                            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
-                                <Button
-                                    variant="contained"
-                                    size="large"
-                                    onClick={() => scrollToSection('projects')}
+                                <Typography
                                     sx={{
-                                        bgcolor: 'white',
-                                        color: theme.palette.primary.main,
-                                        fontWeight: 700,
-                                        borderRadius: 2,
-                                        px: 4,
-                                        py: 1.5,
-                                        '&:hover': {
-                                            transform: 'translateY(-2px)',
-                                            boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-                                        },
+                                        fontSize: { xs: '16px', md: '18px' },
+                                        color: '#626C71',
+                                        lineHeight: 1.7,
+                                        marginBottom: 4,
+                                        maxWidth: '520px',
                                     }}
                                 >
-                                    View My Work
-                                </Button>
-                                <Button
-                                    variant="outlined"
-                                    size="large"
-                                    onClick={() => scrollToSection('contact')}
-                                    sx={{
-                                        borderColor: 'white',
-                                        color: 'white',
-                                        borderWidth: 2,
-                                        fontWeight: 700,
-                                        borderRadius: 2,
-                                        px: 4,
-                                        py: 1.5,
-                                        '&:hover': {
-                                            bgcolor: 'rgba(255,255,255,0.15)',
-                                            transform: 'translateY(-2px)',
-                                        },
-                                    }}
-                                >
-                                    Contact Me
-                                </Button>
-                            </Stack>
+                                    Frontend Developer specializing in React, Material-UI, and 3D web animations.
+                                    Creating beautiful, performant, and user-centered digital solutions.
+                                </Typography>
+                            </motion.div>
 
-                            {/* Social Links */}
-                            <Stack direction="row" spacing={1.5} mt={4}>
-                                {[
-                                    { icon: <GitHub />, link: 'https://github.com/yourusername' },
-                                    { icon: <LinkedIn />, link: 'https://linkedin.com/in/yourusername' },
-                                    { icon: <Email />, link: 'mailto:your.email@example.com' },
-                                ].map((s, i) => (
-                                    <IconButton
-                                        key={i}
-                                        href={s.link}
-                                        target="_blank"
+                            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                                >
+                                    <Button
+                                        variant="contained"
+                                        endIcon={<span className="material-icons">arrow_forward</span>}
                                         sx={{
-                                            color: 'white',
-                                            bgcolor: 'rgba(255,255,255,0.15)',
+                                            padding: '14px 32px',
+                                            borderRadius: '12px',
+                                            fontWeight: 600,
+                                            fontSize: '15px',
+                                            textTransform: 'none',
+                                            background: '#21808D',
                                             '&:hover': {
-                                                transform: 'scale(1.15)',
-                                                bgcolor: 'rgba(255,255,255,0.3)',
+                                                background: '#1D7480',
+                                                transform: 'translateY(-2px)',
+                                                boxShadow: '0 8px 16px rgba(33, 128, 141, 0.2)',
                                             },
                                             transition: 'all 0.3s ease',
                                         }}
                                     >
-                                        {s.icon}
-                                    </IconButton>
-                                ))}
-                            </Stack>
-                        </motion.div>
-                    </Grid>
+                                        View My Work
+                                    </Button>
+                                </motion.div>
 
-                    {/* Right Side (Image) */}
-                    <Grid item xs={12} md={6}>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1, delay: 0.2 }}
-                            style={{ position: 'relative' }}
-                        >
-                            <Box
-                                component="img"
-                                src="/images/vikram.jpg"
-                                alt="Vikram Singh Panwar - Frontend Developer"
-                                sx={{
-                                    width: '100%',
-                                    maxWidth: 380,
-                                    borderRadius: '24px',
-                                    boxShadow: '0 20px 50px rgba(0,0,0,0.4)',
-                                    transition: 'transform 0.4s ease, box-shadow 0.4s ease',
-                                    '&:hover': {
-                                        transform: 'rotateY(3deg) scale(1.05)',
-                                        boxShadow: '0 25px 70px rgba(0,0,0,0.6)',
-                                    },
-                                    display: 'block',
-                                    mx: 'auto',
-                                }}
-                            />
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                >
+                                    <Button
+                                        variant="outlined"
+                                        sx={{
+                                            padding: '14px 32px',
+                                            borderRadius: '12px',
+                                            fontWeight: 600,
+                                            fontSize: '15px',
+                                            textTransform: 'none',
+                                            background: '#FCFCF9',
+                                            color: '#13343B',
+                                            border: '1px solid rgba(94, 82, 64, 0.2)',
+                                            '&:hover': {
+                                                background: '#F5F5F5',
+                                                border: '1px solid rgba(94, 82, 64, 0.2)',
+                                                transform: 'translateY(-2px)',
+                                            },
+                                            transition: 'all 0.3s ease',
+                                        }}
+                                    >
+                                        Get in Touch
+                                    </Button>
+                                </motion.div>
+                            </Box>
+                        </Grid>
 
-                            {/* Floating Card */}
+                        {/* Right Content - Browser Frame */}
+                        <Grid item xs={12} md={6}>
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: 20,
-                                    right: 20,
-                                    background: 'white',
-                                    borderRadius: 16,
-                                    padding: '16px 20px',
-                                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                                    minWidth: 160,
-                                }}
+                                initial={{ opacity: 0, scale: 0.95, z: -50 }}
+                                animate={{ opacity: 1, scale: 1, z: 0 }}
+                                transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                                style={{ perspective: 1500 }}
                             >
-                                <Typography variant="h4" color="primary" fontWeight={800}>
-                                    50+
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary" fontWeight={600}>
-                                    Projects Completed
-                                </Typography>
+                                <BrowserFrame>
+                                    <Box
+                                        sx={{
+                                            width: { xs: '100%', md: '450px' },  // ← Change width here
+                                            height: { xs: 300, md: 380 },
+                                            background: 'linear-gradient(135deg, rgba(33, 128, 141, 0.1) 0%, rgba(19, 52, 59, 0.05) 100%)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: '#626C71',
+                                            fontSize: '14px',
+                                            fontWeight: 500,
+                                            position: 'relative',
+                                            overflow: 'hidden',
+                                        }}
+                                    >
+                                        {/* Floating elements */}
+                                        {[...Array(3)].map((_, i) => (
+                                            <motion.div
+                                                key={i}
+                                                animate={{
+                                                    y: [0, -20, 0],
+                                                    rotate: [0, 10, 0],
+                                                }}
+                                                transition={{
+                                                    duration: 6 + i,
+                                                    repeat: Infinity,
+                                                    ease: 'easeInOut',
+                                                    delay: i,
+                                                }}
+                                                style={{
+                                                    position: 'absolute',
+                                                    width: 40,
+                                                    height: 40,
+                                                    background: '#21808D',
+                                                    borderRadius: '8px',
+                                                    opacity: 0.1,
+                                                    top: i === 0 ? '20%' : i === 1 ? '60%' : 'auto',
+                                                    bottom: i === 2 ? '20%' : 'auto',
+                                                    left: i === 0 ? '15%' : i === 2 ? '25%' : 'auto',
+                                                    right: i === 1 ? '20%' : 'auto',
+                                                }}
+                                            />
+                                        ))}
+                                        <span>
+                                            <img
+                                                src="/images/man-img.webp"
+                                                alt="Hero Placeholder"
+                                                width={300}
+                                                height={360}
+                                            />
+                                        </span>
+                                    </Box>
+                                </BrowserFrame>
                             </motion.div>
-                        </motion.div>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Container>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                animate={{ y: [0, -12, 0] }}       // float up and down
-                transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-                style={{
-                    position: 'absolute',
-                    bottom: 30,
-                    left: '50%',
-                    x: '-50%',                      // centers horizontally
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: 4,
-                }}
-                onClick={() => scrollToSection('about')}
-            >
-                <Typography
-                    variant="caption"
-                    sx={{
-                        color: 'white',
-                        fontWeight: 600,
-                        letterSpacing: 1,
-                        userSelect: 'none',
-                    }}
-                >
-                    SCROLL DOWN
-                </Typography>
-                <KeyboardArrowDown sx={{ color: 'white', fontSize: 32 }} />
-            </motion.div>
-
-
-        </Box>
+                </Container>
+            </Box>
+        </>
     );
-}
+};
+
+export default HomePage;

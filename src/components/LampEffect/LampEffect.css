@@ -1,0 +1,41 @@
+.lamp-wrapper {
+    position: absolute;
+    top: 30%;
+    /* adjust as needed */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    /* line width */
+    height: 4px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Pure yellow line — no side glow */
+.lamp-line {
+    width: 100%;
+    height: 3px;
+    background-color: #ffd700;
+    border-radius: 2px;
+    z-index: 2;
+}
+
+/* Glow only below the line */
+.lamp-glow {
+    position: absolute;
+    top: 100%;
+    /* starts just under the line */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    /* glow width */
+    height: 250px;
+    /* glow depth */
+    background: radial-gradient(ellipse at center,
+            rgba(255, 215, 0, 0.6) 0%,
+            rgba(255, 215, 0, 0.15) 40%,
+            transparent 80%);
+    filter: blur(60px);
+    z-index: 1;
+    pointer-events: none;
+}

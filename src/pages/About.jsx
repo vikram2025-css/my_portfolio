@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import {
     Box,
     Container,
@@ -55,15 +57,27 @@ export default function About() {
             id="about"
             sx={{
                 minHeight: '100vh',
-                py: { xs: 6, md: 10 },
-                bgcolor: 'background.default'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: { xs: '80px 24px 80px', md: '80px 24px 80px' },
+                position: 'relative',
+                overflow: 'hidden',
+
+
+                // ✅ Background image properties
+                //backgroundImage: `url('/images/bg-image.webp')`,
+                backgroundImage: `url('/images/hero.webp')`,
+                backgroundSize: 'cover',        // Cover the entire Box
+                backgroundPosition: 'center',   // Center the image
+                backgroundRepeat: 'no-repeat',  // Avoid repeating
             }}
         >
             <Container maxWidth="lg">
                 {/* Header Section */}
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Avatar
-                        src="/your-photo.jpg"
+                        src="images/vikram.jpg"
                         alt="Profile"
                         sx={{
                             width: { xs: 120, md: 150 },
@@ -96,7 +110,13 @@ export default function About() {
                     sx={{
                         p: { xs: 3, md: 5 },
                         mb: 6,
-                        borderRadius: 2
+                        borderRadius: 2,
+                        transition: "all 0.3s ease", // smooth animation
+                        "&:hover": {
+                            transform: "translateY(-6px)", // lift up slightly
+                            boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)", // stronger shadow
+                            backgroundColor: "rgba(255, 255, 255, 0.95)", // subtle bg effect
+                        },
                     }}
                 >
                     <Typography
@@ -229,9 +249,17 @@ export default function About() {
                         textAlign: 'center',
                         mt: 8,
                         p: 4,
-                        bgcolor: 'primary.main',
+                        bgcolor: 'primary.main', // base color
                         borderRadius: 2,
-                        color: 'white'
+                        color: 'white',
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 3px 6px rgba(0,0,0,0.1)", // initial shadow
+                        "&:hover": {
+                            transform: "translateY(-6px)",
+                            boxShadow: "0 8px 20px rgba(0,0,0,0.3)", // gray/black shadow on hover
+                            // optional: slightly brighter background
+                            backgroundColor: 'primary.main',
+                        },
                     }}
                 >
                     <Typography variant="h5" gutterBottom sx={{ fontWeight: 600 }}>
@@ -258,7 +286,8 @@ export default function About() {
                         <Button
                             variant="outlined"
                             size="large"
-                            href="#projects"
+                            component={Link}
+                            to="/projects"
                             sx={{
                                 borderColor: 'white',
                                 color: 'white',

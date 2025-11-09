@@ -20,6 +20,8 @@ import {
     ArrowForward,
 } from '@mui/icons-material';
 import { keyframes } from '@mui/system';
+import { nav } from 'framer-motion/client';
+import { useNavigate } from 'react-router-dom';
 
 // Hover animation
 const slideUp = keyframes`
@@ -31,6 +33,8 @@ export default function Projects() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const navigate = useNavigate();
+
     const projects = [
         {
             id: 1,
@@ -38,8 +42,8 @@ export default function Projects() {
             description: 'Comprehensive healthcare platform with appointment scheduling, patient management, and billing features.',
             image: 'https://img.freepik.com/free-photo/management-coaching-business-dealing-mentor-concept_53876-133858.jpg?semt=ais_hybrid&w=740&q=80',
             tags: ['React', 'Material-UI', 'Firebase'],
-            liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+            liveLink: '/hospitalpage',
+
             featured: true,
         },
         {
@@ -48,18 +52,19 @@ export default function Projects() {
             description: 'Modern admin dashboard for managing products, orders, and analytics with real-time updates.',
             image: '/projects/ecommerce-dashboard.jpg',
             tags: ['React', 'MUI', 'Chart.js'],
-            liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+            liveLink: '/threejs',
+
             featured: true,
         },
         {
             id: 3,
-            title: 'Social Media App',
-            description: 'Interactive social platform with posts, comments, likes, and real-time notifications.',
-            image: '/projects/social-media.jpg',
-            tags: ['React', 'Redux', 'Socket.io'],
-            liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+            title: 'Product Manager',
+            description: 'Interactive grid table with sorting, filtering, and pagination features and used API for data fetching.',
+            image: '/projects/grid-table.jpg',
+            tags: ['React', 'Material-UI', 'DataGrid'],
+
+            liveLink: '/gridtable',
+
             featured: false,
         },
         {
@@ -68,8 +73,8 @@ export default function Projects() {
             description: 'Beautiful weather application with 7-day forecasts, location search, and detailed metrics.',
             image: '/projects/weather-app.jpg',
             tags: ['React', 'Material-UI', 'API'],
-            liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+            liveLink: '/weather',
+
             featured: false,
         },
         {
@@ -79,7 +84,7 @@ export default function Projects() {
             image: '/projects/task-manager.jpg',
             tags: ['React', 'DnD Kit', 'TypeScript'],
             liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+
             featured: false,
         },
         {
@@ -89,10 +94,19 @@ export default function Projects() {
             image: '/projects/portfolio-builder.jpg',
             tags: ['React', 'Material-UI', 'Firebase'],
             liveLink: 'https://your-project-link.com',
-            githubLink: 'https://github.com/yourusername/project',
+
             featured: true,
         },
+
     ];
+
+    const handleNavigate = (url) => {
+        if (url.startsWith('http')) {
+            window.open(url, '_blank');
+        } else {
+            navigate(url);
+        }
+    };
 
     return (
         <Box
@@ -100,22 +114,14 @@ export default function Projects() {
             sx={{
                 minHeight: '100vh',
                 py: { xs: 6, },
-                bgcolor: 'background.default',
+                background: 'linear-gradient(135deg, #FAF7F0, #EEE8E0)',
+
             }}
         >
 
             {/* Header Section */}
             <Box sx={{ textAlign: 'center', mb: 8 }}>
-                <Chip
-                    label="PORTFOLIO"
-                    color="primary"
-                    sx={{
-                        mb: 2,
-                        fontWeight: 700,
-                        fontSize: '0.85rem',
-                        letterSpacing: 1,
-                    }}
-                />
+
                 <Typography
                     variant={isMobile ? 'h3' : 'h2'}
                     component="h1"
@@ -150,10 +156,11 @@ export default function Projects() {
                         key={project.id}
                         sx={{
                             width: {
-                                xs: '100%',                    // Full width on mobile
-                                sm: 'calc(70% - 16px)',        // 2 cards on tablet
-                                md: 'calc(33.333% - 56px)',    // 3 cards on desktop
+                                xs: '100%',
+                                sm: 'calc(50% - 16px)', // 2 cards per row on tablet
+                                md: 'calc(30% - 24px)', // 3 per row on desktop, slightly narrower
                             },
+
                             display: 'flex',
                             flexDirection: 'column',
                             borderRadius: 3,
@@ -199,7 +206,7 @@ export default function Projects() {
                                 position: 'relative',
                                 overflow: 'hidden',
                                 width: '100%',
-                                height: 300,  // Fixed height
+                                height: 200,  // Fixed height
                             }}
                         >
                             <CardMedia
@@ -241,7 +248,7 @@ export default function Projects() {
                                 >
                                     <IconButton
                                         href={project.liveLink}
-                                        target="_blank"
+
                                         size="small"
                                         sx={{
                                             bgcolor: 'white',
@@ -277,7 +284,7 @@ export default function Projects() {
                         <CardContent
                             sx={{
                                 flexGrow: 1,
-                                p: 3,
+                                p: 2,
                                 display: 'flex',
                                 flexDirection: 'column',
                             }}
@@ -289,7 +296,7 @@ export default function Projects() {
                                     fontWeight: 700,
                                     mb: 1.5,
                                     color: 'text.primary',
-                                    maxHeight: 56,  // Fixed height for 2 lines
+                                    maxHeight: 48,  // Fixed height for 2 lines
                                     overflow: 'hidden',
                                     display: '-webkit-box',
                                     WebkitLineClamp: 2,
@@ -304,7 +311,7 @@ export default function Projects() {
                                 sx={{
                                     mb: 2,
                                     lineHeight: 1.6,
-                                    height: 66,  // Fixed height for 3 lines
+                                    height: 54,  // Fixed height for 3 lines
                                     overflow: 'hidden',
                                     display: '-webkit-box',
                                     WebkitLineClamp: 3,
@@ -346,13 +353,14 @@ export default function Projects() {
                         </CardContent>
 
                         {/* View More Button */}
-                        <CardActions sx={{ p: 3, pt: 0 }}>
+                        <CardActions sx={{ p: 2, pt: 0 }}>
                             <Button
                                 fullWidth
                                 variant="outlined"
                                 endIcon={<ArrowForward />}
-                                href={project.liveLink}
-                                target="_blank"
+                                onClick={() => handleNavigate(project.liveLink)}
+
+
                                 sx={{
                                     borderRadius: 2,
                                     py: 1.2,
