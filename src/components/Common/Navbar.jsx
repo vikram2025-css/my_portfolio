@@ -22,7 +22,7 @@ export default function Navbar() {
         { title: "Home", path: "/" },
         { title: "Projects", path: "/projects" },
         { title: "About", path: "/about" },
-        { title: "Contact", path: "/contact" },
+
         { title: "Login", path: "/login" },
     ];
 
@@ -48,6 +48,12 @@ export default function Navbar() {
                                 component={Link}
                                 to={link.path}
                                 color="inherit"
+                                sx={{
+                                    backgroundColor: "transparent",
+                                    "&:hover": {
+                                        backgroundColor: "transparent", // 🔥 removes the hover bg
+                                    },
+                                }}
                             >
                                 {link.title}
                             </Button>
@@ -65,13 +71,14 @@ export default function Navbar() {
                         <MenuIcon />
                     </IconButton>
                 </Toolbar>
-            </AppBar>
+            </AppBar >
 
             {/* Mobile Drawer */}
-            <Drawer
+            < Drawer
                 anchor="right"
                 open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
+                onClose={() => setDrawerOpen(false)
+                }
             >
                 <Box
                     sx={{ width: 250 }}
@@ -89,7 +96,7 @@ export default function Navbar() {
                         ))}
                     </List>
                 </Box>
-            </Drawer>
+            </Drawer >
         </>
     );
 }

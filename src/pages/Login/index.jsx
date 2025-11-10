@@ -123,7 +123,7 @@ const Login = () => {
     useAuthStore.setState({ isAuthenticated: true, user: userData });
 
     // Navigate to dashboard
-    navigate("/dashboard");
+    navigate("/");
   };
 
 
