@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import ThemeToggleButton from "./Button";
 
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -22,70 +24,125 @@ export default function Navbar() {
         { title: "Home", path: "/" },
         { title: "Projects", path: "/projects" },
         { title: "About", path: "/about" },
-
         { title: "Login", path: "/login" },
     ];
 
+    // Animation for drop-in 1 by 1
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.55,
+            },
+        },
+    };
+
+    // Strong bounce + slow drop animation
+    const itemVariants = {
+        hidden: { y: -40, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 80,
+                damping: 6,
+                duration: 0.8,
+            },
+        },
+    };
+
     return (
         <>
-            <AppBar position="static" color="transparent" elevation={0}>
-                <Toolbar>
-                    {/* Logo / Brand */}
+            <AppBar
+                position="absolute"
+                elevation={0}
+                sx={{
+                    background: "transparent",
+                    boxShadow: "none",
+                    zIndex: 1000,
+                }}
+            >
+                <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+                    {/* Logo */}
                     <Typography
                         variant="h6"
                         component={Link}
                         to="/"
-                        sx={{ flexGrow: 1, textDecoration: "none", color: "inherit" }}
+                        sx={{ textDecoration: "none", color: "white", fontWeight: 700 }}
                     >
                         MyPortfolio
                     </Typography>
 
-                    {/* Desktop Links */}
-                    <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+                    {/* Centered NavLinks */}
+                    <Box
+                        component={motion.div}
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        sx={{
+                            display: { xs: "none", md: "flex" },
+                            gap: 3,
+                            position: "absolute",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                        }}
+                    >
                         {navLinks.map((link) => (
-                            <Button
-                                key={link.title}
-                                component={Link}
-                                to={link.path}
-                                color="inherit"
-                                sx={{
-                                    backgroundColor: "transparent",
-                                    "&:hover": {
-                                        backgroundColor: "transparent", // 🔥 removes the hover bg
-                                    },
-                                }}
-                            >
-                                {link.title}
-                            </Button>
+                            <motion.div key={link.title} variants={itemVariants}>
+                                <Button
+                                    component={Link}
+                                    to={link.path}
+                                    sx={{
+                                        position: "relative",
+                                        fontSize: "16px",
+                                        color: "#454545",
+                                        px: 2,
+                                        "&:hover": {
+                                            backgroundColor: "transparent",
+                                        },
+                                        "&::after": {
+                                            content: '""',
+                                            position: "absolute",
+                                            width: "0%",
+                                            height: "2px",
+                                            left: 0,
+                                            bottom: -2,
+                                            backgroundColor: "#f5f570ff",
+                                            transition: "0.3s ease",
+                                        },
+                                        "&:hover::after": {
+                                            width: "100%",
+                                        },
+                                    }}
+                                >
+                                    {link.title}
+                                </Button>
+                            </motion.div>
                         ))}
                     </Box>
 
                     {/* Hamburger Icon */}
                     <IconButton
                         edge="end"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ display: { xs: "flex", md: "none" } }}
+                        sx={{ display: { xs: "flex", md: "none" }, color: "white" }}
                         onClick={() => setDrawerOpen(true)}
                     >
                         <MenuIcon />
                     </IconButton>
+
+                    <ThemeToggleButton />
+
                 </Toolbar>
-            </AppBar >
+            </AppBar>
 
             {/* Mobile Drawer */}
-            < Drawer
+            <Drawer
                 anchor="right"
                 open={drawerOpen}
-                onClose={() => setDrawerOpen(false)
-                }
+                onClose={() => setDrawerOpen(false)}
             >
-                <Box
-                    sx={{ width: 250 }}
-                    role="presentation"
-                    onClick={() => setDrawerOpen(false)}
-                    onKeyDown={() => setDrawerOpen(false)}
-                >
+                <Box sx={{ width: 250 }}>
                     <List>
                         {navLinks.map((link) => (
                             <ListItem key={link.title} disablePadding>
@@ -96,7 +153,7 @@ export default function Navbar() {
                         ))}
                     </List>
                 </Box>
-            </Drawer >
+            </Drawer>
         </>
     );
 }

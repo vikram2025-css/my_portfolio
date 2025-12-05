@@ -1,14 +1,22 @@
+import { useState } from 'react';
 import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import BrowserFrame from '../components/HeroSection/BrowserFrame';
 import AnimatedText from '../components/HeroSection/AnimatedText';
+import { Fab } from "@mui/material";
+import ChatIcon from "@mui/icons-material/Chat";
+import ChatCard from "../components/Ai_bot/Bot";
+import Map from '../components/Map';
+
 
 const HomePage = () => {
+    const [open, setOpen] = useState(false);
+
     return (
         <>
 
             <Box
-                sx={{
+                sx={(theme) => ({
                     minHeight: '100vh',
                     display: 'flex',
                     alignItems: 'center',
@@ -24,7 +32,19 @@ const HomePage = () => {
                     backgroundSize: 'cover',        // Cover the entire Box
                     backgroundPosition: 'center',   // Center the image
                     backgroundRepeat: 'no-repeat',  // Avoid repeating
-                }}
+
+
+                    "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        inset: 0,
+                        backgroundColor:
+                            theme.palette.mode === "dark"
+                                ? "rgba(0,0,0,0.6)"
+                                : "rgba(0,0,0,0.0)",
+                        transition: "0.3s ease",
+                    },
+                })}
             >
 
 
@@ -104,7 +124,7 @@ const HomePage = () => {
                                         maxWidth: '520px',
                                     }}
                                 >
-                                    Frontend Developer specializing in React, Material-UI, and 3D web animations.
+                                    Frontend Developer specializing in React,Next.js, Material-UI, and 3D web animations.
                                     Creating beautiful, performant, and user-centered digital solutions.
                                 </Typography>
                             </motion.div>
@@ -165,10 +185,21 @@ const HomePage = () => {
                                     </Button>
                                 </motion.div>
                             </Box>
+                            <ChatCard open={open} onClose={() => setOpen(false)} />
+
+                            <Fab
+                                color="primary"
+                                sx={{ position: "fixed", bottom: 20, right: 20, zIndex: 9999 }}
+                                onClick={() => setOpen(true)}
+                            >
+                                <ChatIcon />
+                            </Fab>
                         </Grid>
 
                         {/* Right Content - Browser Frame */}
                         <Grid item xs={12} md={6}>
+
+
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.95, z: -50 }}
                                 animate={{ opacity: 1, scale: 1, z: 0 }}
@@ -221,7 +252,7 @@ const HomePage = () => {
                                         ))}
                                         <span>
                                             <img
-                                                src="/images/man-img.webp"
+                                                src="/images/profile.webp"
                                                 alt="Hero Placeholder"
                                                 width={300}
                                                 height={360}
@@ -234,6 +265,7 @@ const HomePage = () => {
                     </Grid>
                 </Container>
             </Box>
+            <Map />
         </>
     );
 };

@@ -32,14 +32,14 @@ export default function Footer() {
                             Quick Links
                         </Typography>
                         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                            <Link href="#about" color="inherit" underline="hover">
+                            <Link href="/about" color="inherit" underline="hover">
                                 About
                             </Link>
-                            <Link href="#projects" color="inherit" underline="hover">
+                            <Link href="/projects" color="inherit" underline="hover">
                                 Projects
                             </Link>
-                            <Link href="#contact" color="inherit" underline="hover">
-                                Contact
+                            <Link href="/login" color="inherit" underline="hover">
+                                Login
                             </Link>
                         </Box>
                     </Grid>

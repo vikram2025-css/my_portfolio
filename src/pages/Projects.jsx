@@ -42,7 +42,7 @@ export default function Projects() {
             description: 'Comprehensive healthcare platform with appointment scheduling, patient management, and billing features.',
             image: 'https://img.freepik.com/free-photo/management-coaching-business-dealing-mentor-concept_53876-133858.jpg?semt=ais_hybrid&w=740&q=80',
             tags: ['React', 'Material-UI', 'Firebase'],
-            liveLink: '/hospitalpage',
+            liveLink: 'https://vikram-eb0f7.web.app/',
 
             featured: true,
         },
@@ -52,7 +52,7 @@ export default function Projects() {
             description: 'Modern admin dashboard for managing products, orders, and analytics with real-time updates.',
             image: '/projects/ecommerce-dashboard.jpg',
             tags: ['React', 'MUI', 'Chart.js'],
-            liveLink: '/threejs',
+            liveLink: '/projects',
 
             featured: true,
         },
@@ -60,7 +60,7 @@ export default function Projects() {
             id: 3,
             title: 'Product Manager',
             description: 'Interactive grid table with sorting, filtering, and pagination features and used API for data fetching.',
-            image: '/projects/grid-table.jpg',
+            image: '/src/assets/images/product.png',
             tags: ['React', 'Material-UI', 'DataGrid'],
 
             liveLink: '/gridtable',
@@ -71,7 +71,7 @@ export default function Projects() {
             id: 4,
             title: 'Weather Forecast App',
             description: 'Beautiful weather application with 7-day forecasts, location search, and detailed metrics.',
-            image: '/projects/weather-app.jpg',
+            image: '/src/assets/images/weather.webp',
             tags: ['React', 'Material-UI', 'API'],
             liveLink: '/weather',
 
@@ -83,7 +83,7 @@ export default function Projects() {
             description: 'Productivity app with drag-and-drop kanban boards, deadlines, and team collaboration features.',
             image: '/projects/task-manager.jpg',
             tags: ['React', 'DnD Kit', 'TypeScript'],
-            liveLink: 'https://your-project-link.com',
+            liveLink: '/projects',
 
             featured: false,
         },
@@ -93,7 +93,7 @@ export default function Projects() {
             description: 'Drag-and-drop website builder allowing users to create stunning portfolios without coding.',
             image: '/projects/portfolio-builder.jpg',
             tags: ['React', 'Material-UI', 'Firebase'],
-            liveLink: 'https://your-project-link.com',
+            liveLink: '/projects',
 
             featured: true,
         },
@@ -114,8 +114,15 @@ export default function Projects() {
             sx={{
                 minHeight: '100vh',
                 py: { xs: 6, },
-                background: 'linear-gradient(135deg, #FAF7F0, #EEE8E0)',
+                px: { xs: 2, md: 8 },
 
+
+                // ✅ Background image properties
+                //backgroundImage: `url('/images/bg-image.webp')`,
+                backgroundImage: `url('/images/hero.webp')`,
+                backgroundSize: 'cover',        // Cover the entire Box
+                backgroundPosition: 'center',   // Center the image
+                backgroundRepeat: 'no-repeat',  // Avoid repeating
             }}
         >
 

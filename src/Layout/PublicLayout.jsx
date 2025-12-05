@@ -15,6 +15,7 @@ export default function PublicLayout() {
                     {/* 👇 All child pages will render here */}
                     <Outlet />
                 </Box>
+
                 <Footer />
             </Box>
         </>

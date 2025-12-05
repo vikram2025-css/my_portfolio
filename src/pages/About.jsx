@@ -25,8 +25,9 @@ export default function About() {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const skills = [
-        'React', 'JavaScript', 'Material-UI', 'HTML5', 'CSS3',
-        'Responsive Design', 'Git', 'REST APIs', 'TypeScript', 'Zustand'
+        'JavaScript', 'HTML5', 'CSS3', 'React', 'Next.js', 'Material-UI',
+        'Responsive Design', 'Git', 'REST APIs', 'TypeScript', 'Zustand',
+        'Redux toolkit'
     ];
 
     const strengths = [
@@ -77,14 +78,14 @@ export default function About() {
                 {/* Header Section */}
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Avatar
-                        src="images/vikram.jpg"
+                        src="images/profile.webp"
                         alt="Profile"
                         sx={{
                             width: { xs: 120, md: 150 },
                             height: { xs: 120, md: 150 },
                             margin: '0 auto',
                             mb: 3,
-                            border: `4px solid ${theme.palette.primary.main}`
+                            border: `2px solid ${theme.palette.primary.main}`
                         }}
                     />
                     <Typography

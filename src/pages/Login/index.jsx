@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import InputField from '../../components/InputField';
+import InputField from '../../components/Common/InputField';
 import { useNavigate } from 'react-router-dom';
 import {
   Paper,

@@ -77,26 +77,29 @@ export default function WeatherApp() {
     return (
         <Box
             sx={{
-                minHeight: "100vh",
+
+                height: "100vh",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 background: "linear-gradient(135deg, #71b7e6, #9b59b6)",
 
                 fontFamily: "'Roboto', sans-serif",
+
             }}
         >
             <Paper
                 elevation={15}
                 sx={{
                     width: 420,
-                    padding: 5,
+                    padding: 3,
                     borderRadius: 4,
                     boxShadow:
                         "0 8px 30px rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.1)",
                     background:
                         "linear-gradient(145deg, #ffffffdd, #f0f0f0dd)",
                     textAlign: "center",
+                    mt: 8,
                 }}
             >
                 <Typography
@@ -189,7 +192,7 @@ export default function WeatherApp() {
                 {weather && (
                     <Box
                         sx={{
-                            p: 3,
+                            p: 2,
                             borderRadius: 3,
                             backgroundColor: "rgba(255, 255, 255, 0.75)",
                             boxShadow: "0 4px 20px rgb(0 0 0 / 0.1)",
