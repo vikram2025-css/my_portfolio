@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Container, Grid, Typography, Link, IconButton } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { Box, Container, Grid, Typography, IconButton, Link } from "@mui/material";
 import { Facebook, Twitter, LinkedIn, Instagram } from "@mui/icons-material";
 
 export default function Footer() {
@@ -32,13 +32,13 @@ export default function Footer() {
                             Quick Links
                         </Typography>
                         <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                            <Link href="/about" color="inherit" underline="hover">
+                            <Link component={RouterLink} to="/about" color="inherit" underline="hover">
                                 About
                             </Link>
-                            <Link href="/projects" color="inherit" underline="hover">
+                            <Link component={RouterLink} to="/projects" color="inherit" underline="hover">
                                 Projects
                             </Link>
-                            <Link href="/login" color="inherit" underline="hover">
+                            <Link component={RouterLink} to="/login" color="inherit" underline="hover">
                                 Login
                             </Link>
                         </Box>
@@ -49,8 +49,7 @@ export default function Footer() {
                         <Typography variant="h6" gutterBottom fontWeight="bold">
                             Contact
                         </Typography>
-                        <Typography variant="body2">Email: youremail@example.com</Typography>
-                        <Typography variant="body2">Phone: +91 98765 43210</Typography>
+                        <Typography variant="body2">Email: vikramsinghkv496@gmail.com</Typography>
                     </Grid>
 
                     {/* Column 4 - Socials */}
@@ -65,7 +64,15 @@ export default function Footer() {
                             <IconButton color="inherit" size="small" href="#">
                                 <Twitter />
                             </IconButton>
-                            <IconButton color="inherit" size="small" href="#">
+                            <IconButton
+                                color="inherit"
+                                size="small"
+                                href="https://www.linkedin.com/in/vikram-singh-panwar-994ba4386"
+                                component="a"
+                                target="_blank"
+                                rel="noopener noreferrer"
+
+                            >
                                 <LinkedIn />
                             </IconButton>
                             <IconButton color="inherit" size="small" href="#">

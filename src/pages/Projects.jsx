@@ -20,7 +20,6 @@ import {
     ArrowForward,
 } from '@mui/icons-material';
 import { keyframes } from '@mui/system';
-import { nav } from 'framer-motion/client';
 import { useNavigate } from 'react-router-dom';
 
 // Hover animation
@@ -54,7 +53,7 @@ export default function Projects() {
             tags: ['React', 'MUI', 'Chart.js'],
             liveLink: '/projects',
 
-            featured: true,
+            featured: false,
         },
         {
             id: 3,
@@ -65,7 +64,7 @@ export default function Projects() {
 
             liveLink: '/gridtable',
 
-            featured: false,
+            featured: true,
         },
         {
             id: 4,
@@ -75,17 +74,17 @@ export default function Projects() {
             tags: ['React', 'Material-UI', 'API'],
             liveLink: '/weather',
 
-            featured: false,
+            featured: true,
         },
         {
             id: 5,
-            title: 'Task Management Tool',
-            description: 'Productivity app with drag-and-drop kanban boards, deadlines, and team collaboration features.',
-            image: '/projects/task-manager.jpg',
-            tags: ['React', 'DnD Kit', 'TypeScript'],
-            liveLink: '/projects',
+            title: 'Monthly Expense Tracker',
+            description: 'A user-friendly app to track monthly expenses, visualize spending patterns, and set budget goals.',
+            image: '/src/assets/images/expense.png',
+            tags: ['React', 'Tailwind', 'Firebase'],
+            liveLink: 'https://monthlyexpense01.netlify.app/',
 
-            featured: false,
+            featured: true,
         },
         {
             id: 6,
@@ -95,7 +94,7 @@ export default function Projects() {
             tags: ['React', 'Material-UI', 'Firebase'],
             liveLink: '/projects',
 
-            featured: true,
+            featured: false,
         },
 
     ];
@@ -164,18 +163,19 @@ export default function Projects() {
                         sx={{
                             width: {
                                 xs: '100%',
-                                sm: 'calc(50% - 16px)', // 2 cards per row on tablet
-                                md: 'calc(30% - 24px)', // 3 per row on desktop, slightly narrower
+                                sm: 'calc(50% - 16px)',
+                                md: 'calc(30% - 24px)',
                             },
-
                             display: 'flex',
                             flexDirection: 'column',
                             borderRadius: 3,
                             overflow: 'hidden',
                             position: 'relative',
-                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                            boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                            '&:hover': {
+                            opacity: project.featured ? 1 : 0.6,
+                            pointerEvents: project.featured ? 'auto' : 'none',
+
+                            // keep hover only for enabled projects
+                            '&:hover': project.featured && {
                                 transform: 'translateY(-12px)',
                                 boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
                                 '& .project-image': {
@@ -184,12 +184,10 @@ export default function Projects() {
                                 '& .project-overlay': {
                                     opacity: 1,
                                 },
-                                '& .project-actions': {
-                                    animation: `${slideUp} 0.3s ease-out`,
-                                },
                             },
                         }}
                     >
+
                         {/* Featured Badge */}
                         {project.featured && (
                             <Chip
@@ -366,8 +364,7 @@ export default function Projects() {
                                 variant="outlined"
                                 endIcon={<ArrowForward />}
                                 onClick={() => handleNavigate(project.liveLink)}
-
-
+                                disabled={!project.featured}
                                 sx={{
                                     borderRadius: 2,
                                     py: 1.2,
@@ -375,17 +372,27 @@ export default function Projects() {
                                     textTransform: 'none',
                                     fontSize: '0.95rem',
                                     borderWidth: 2,
-                                    '&:hover': {
+                                    transition: 'all 0.3s ease',
+
+                                    // ✅ enabled hover
+                                    '&:hover': project.featured && {
                                         borderWidth: 2,
                                         bgcolor: 'primary.main',
                                         color: 'white',
                                         transform: 'translateX(4px)',
                                     },
-                                    transition: 'all 0.3s ease',
+
+                                    // ✅ disabled styling
+                                    '&.Mui-disabled': {
+                                        borderColor: 'grey.400',
+                                        color: 'grey.500',
+                                        cursor: 'not-allowed',
+                                    },
                                 }}
                             >
                                 View Project
                             </Button>
+
                         </CardActions>
                     </Card>
                 ))}

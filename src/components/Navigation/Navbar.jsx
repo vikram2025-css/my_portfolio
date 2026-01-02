@@ -15,7 +15,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import ThemeToggleButton from "./Button";
+import ThemeToggleButton from "../Common/Button";
 
 export default function Navbar() {
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -63,7 +63,7 @@ export default function Navbar() {
                     zIndex: 1000,
                 }}
             >
-                <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+                <Toolbar sx={{ position: "relative" }}>
                     {/* Logo */}
                     <Typography
                         variant="h6"
@@ -74,7 +74,7 @@ export default function Navbar() {
                         MyPortfolio
                     </Typography>
 
-                    {/* Centered NavLinks */}
+                    {/* Center Nav (md+) */}
                     <Box
                         component={motion.div}
                         variants={containerVariants}
@@ -88,52 +88,45 @@ export default function Navbar() {
                             transform: "translateX(-50%)",
                         }}
                     >
-                        {navLinks.map((link) => (
-                            <motion.div key={link.title} variants={itemVariants}>
-                                <Button
-                                    component={Link}
-                                    to={link.path}
-                                    sx={{
-                                        position: "relative",
-                                        fontSize: "16px",
-                                        color: "#454545",
-                                        px: 2,
-                                        "&:hover": {
-                                            backgroundColor: "transparent",
-                                        },
-                                        "&::after": {
-                                            content: '""',
-                                            position: "absolute",
-                                            width: "0%",
-                                            height: "2px",
-                                            left: 0,
-                                            bottom: -2,
-                                            backgroundColor: "#f5f570ff",
-                                            transition: "0.3s ease",
-                                        },
-                                        "&:hover::after": {
-                                            width: "100%",
-                                        },
-                                    }}
-                                >
-                                    {link.title}
-                                </Button>
-                            </motion.div>
+                        {navLinks.map((link) =>
+                        (<motion.div key={link.title} variants={itemVariants}>
+                            <Button component={Link} to={link.path}
+                                sx={{
+                                    position: "relative", fontSize: "16px", color: "#454545", px: 2, "&:hover":
+                                        { backgroundColor: "transparent", },
+                                    "&::after": {
+                                        content: '""', position: "absolute", width: "0%",
+                                        height: "2px", left: 0, bottom: -2, backgroundColor: "#f5f570ff",
+                                        transition: "0.3s ease",
+                                    },
+                                    "&:hover::after": { width: "100%", },
+                                }} >
+                                {link.title}
+                            </Button>
+                        </motion.div>
                         ))}
                     </Box>
 
-                    {/* Hamburger Icon */}
-                    <IconButton
-                        edge="end"
-                        sx={{ display: { xs: "flex", md: "none" }, color: "white" }}
-                        onClick={() => setDrawerOpen(true)}
+                    {/* Right-side actions (xs / sm) */}
+                    <Box
+                        sx={{
+                            marginLeft: "auto",
+                            display: { xs: "flex", md: "none" },
+                            alignItems: "center",
+                            gap: 1,
+                        }}
                     >
-                        <MenuIcon />
-                    </IconButton>
+                        <IconButton
+                            sx={{ color: "white" }}
+                            onClick={() => setDrawerOpen(true)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
 
-                    <ThemeToggleButton />
-
+                        <ThemeToggleButton />
+                    </Box>
                 </Toolbar>
+
             </AppBar>
 
             {/* Mobile Drawer */}

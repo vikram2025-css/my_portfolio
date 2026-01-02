@@ -5,8 +5,9 @@ import BrowserFrame from '../components/HeroSection/BrowserFrame';
 import AnimatedText from '../components/HeroSection/AnimatedText';
 import { Fab } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
-import ChatCard from "../components/Ai_bot/Bot";
+import ChatCard from "../components/HeroSection/Ai_bot/Bot";
 import Map from '../components/Map';
+import Butterflies from '../components/Butterfly/Butterflies';
 
 
 const HomePage = () => {
@@ -14,7 +15,7 @@ const HomePage = () => {
 
     return (
         <>
-
+            <Butterflies />
             <Box
                 sx={(theme) => ({
                     minHeight: '100vh',
@@ -252,7 +253,7 @@ const HomePage = () => {
                                         ))}
                                         <span>
                                             <img
-                                                src="/images/profile.webp"
+                                                src="/images/profile2.webp"
                                                 alt="Hero Placeholder"
                                                 width={300}
                                                 height={360}

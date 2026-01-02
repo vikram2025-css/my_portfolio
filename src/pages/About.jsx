@@ -25,8 +25,8 @@ export default function About() {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const skills = [
-        'JavaScript', 'HTML5', 'CSS3', 'React', 'Next.js', 'Material-UI',
-        'Responsive Design', 'Git', 'REST APIs', 'TypeScript', 'Zustand',
+        'JavaScript', 'HTML5', 'CSS3', 'React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS', 'Shadcn Ui',
+        'Framer Motion', 'Git', 'Jira', 'REST APIs', 'Zustand',
         'Redux toolkit'
     ];
 

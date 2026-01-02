@@ -9,6 +9,10 @@ import Weather from "../components/Weather";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 
+import AdminLogin from "../pages/E-com-login/Admin";
+import CustomerLogin from "../pages/E-com-login/Customer";
+import Customersignup from "../pages/E-com-signUp/Customer";
+
 export default function AppRoutes() {
     return (
         <Routes>
@@ -27,7 +31,75 @@ export default function AppRoutes() {
 
                 <Route path="/gridtable" element={<GridTable />} />
                 <Route path="/weather" element={<Weather />} />
+
+
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/customer/login" element={<CustomerLogin />} />
+                <Route path="/customer/signUp" element={<Customersignup />} />
+
             </Route>
+
+
+
+
+            {/* <Route element={<DeliveryPlatformLayout />} >
+
+                <Route path="/delivery-platform" element={<DeliveryPlatform />} />
+                {
+                    path: '/admin',
+                element: <AdminLayout />,
+                children: [
+                {
+                    path: '/dashboard',
+                element: <AdminDashboard />
+              }
+                ]
+          },
+                {
+                    path: '/admin/login',
+                element: <AdminLogin />
+          },
+                {
+                    path: '/customer',
+                element: <CustomerLayout />,
+                children: [
+                {
+                    path: '/dashboard',
+                element: <CustomerDashboard />
+              }
+                ]
+          },
+                {
+                    path: '/customer/login',
+                element: <CustomerLogin />
+          },
+                {
+                    path: '/customer/signup',
+                element: <CustomerSignup />
+          },
+                {
+                    path: '/restaurant',
+                element: <RestuarantLayout />,
+                children: [
+                {
+                    path: '/dashboard',
+                element: <RestaurantDashboard />
+              }
+                ]
+          },
+                {
+                    path: '/restaurant/login',
+                element: <RestaurantLogin />
+          },
+                {
+                    path: '/restaurant/signup',
+                element: <RestaurantSignup />
+          },
+                ]
+
+            </Route> */}
+
+
         </Routes>
     );
 }
