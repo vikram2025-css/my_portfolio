@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import ThemeToggleButton from "../Common/Button";
 
 export default function Navbar() {
@@ -24,7 +24,7 @@ export default function Navbar() {
         { title: "Home", path: "/" },
         { title: "Projects", path: "/projects" },
         { title: "About", path: "/about" },
-        { title: "Login", path: "/login" },
+        { title: "Login", path: "/login", variant: "outlined", color: "error" },
     ];
 
     // Animation for drop-in 1 by 1
@@ -90,7 +90,7 @@ export default function Navbar() {
                     >
                         {navLinks.map((link) =>
                         (<motion.div key={link.title} variants={itemVariants}>
-                            <Button component={Link} to={link.path}
+                            <Button variant={link.variant} color={link.color} component={Link} to={link.path}
                                 sx={{
                                     position: "relative", fontSize: "16px", color: "#454545", px: 2, "&:hover":
                                         { backgroundColor: "transparent", },

@@ -39,7 +39,7 @@ export default function Projects() {
             id: 1,
             title: 'Hospital Management System',
             description: 'Comprehensive healthcare platform with appointment scheduling, patient management, and billing features.',
-            image: 'https://img.freepik.com/free-photo/management-coaching-business-dealing-mentor-concept_53876-133858.jpg?semt=ais_hybrid&w=740&q=80',
+            image: '/images/hospital.png',
             tags: ['React', 'Material-UI', 'Firebase'],
             liveLink: 'https://vikram-eb0f7.web.app/',
 
@@ -59,7 +59,7 @@ export default function Projects() {
             id: 3,
             title: 'Product Manager',
             description: 'Interactive grid table with sorting, filtering, and pagination features and used API for data fetching.',
-            image: '/src/assets/images/product.png',
+            image: '/images/product.png',
             tags: ['React', 'Material-UI', 'DataGrid'],
 
             liveLink: '/gridtable',
@@ -70,7 +70,7 @@ export default function Projects() {
             id: 4,
             title: 'Weather Forecast App',
             description: 'Beautiful weather application with 7-day forecasts, location search, and detailed metrics.',
-            image: '/src/assets/images/weather.webp',
+            image: '/images/weather.webp',
             tags: ['React', 'Material-UI', 'API'],
             liveLink: '/weather',
 
@@ -80,7 +80,7 @@ export default function Projects() {
             id: 5,
             title: 'Monthly Expense Tracker',
             description: 'A user-friendly app to track monthly expenses, visualize spending patterns, and set budget goals.',
-            image: '/src/assets/images/expense.png',
+            image: '/images/expense.png',
             tags: ['React', 'Tailwind', 'Firebase'],
             liveLink: 'https://monthlyexpense01.netlify.app/',
 

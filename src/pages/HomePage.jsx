@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import { motion } from 'framer-motion';
 import BrowserFrame from '../components/HeroSection/BrowserFrame';
@@ -10,8 +11,11 @@ import Map from '../components/Map';
 import Butterflies from '../components/Butterfly/Butterflies';
 
 
+
 const HomePage = () => {
     const [open, setOpen] = useState(false);
+
+
 
     return (
         <>
@@ -53,30 +57,7 @@ const HomePage = () => {
                     <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
                         {/* Left Content */}
                         <Grid item xs={12} md={6}>
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                <Box
-                                    sx={{
-                                        display: 'inline-flex',
-                                        alignItems: 'center',
-                                        gap: 1,
-                                        padding: '8px 16px',
-                                        background: '#FCFCF9',
-                                        border: '1px solid rgba(94, 82, 64, 0.2)',
-                                        borderRadius: '24px',
-                                        fontSize: '13px',
-                                        fontWeight: 500,
-                                        color: '#626C71',
-                                        marginBottom: 3,
-                                    }}
-                                >
-                                    <span className="material-icons" style={{ fontSize: 16 }}>circle</span>
-                                    Available for work
-                                </Box>
-                            </motion.div>
+
 
                             <Typography
                                 variant="h1"
@@ -137,8 +118,10 @@ const HomePage = () => {
                                     transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                                 >
                                     <Button
+                                        component={Link}
+                                        to="/projects"
+
                                         variant="contained"
-                                        endIcon={<span className="material-icons">arrow_forward</span>}
                                         sx={{
                                             padding: '14px 32px',
                                             borderRadius: '12px',

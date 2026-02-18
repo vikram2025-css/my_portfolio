@@ -13,10 +13,10 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function ChatCard({ open, onClose }) {
     const botData = [
         { question: "hello", answer: "Hello, you can ask me about skills, experience, projects, contact…" },
-        { question: "name", answer: "John Doe — Frontend Developer 👨‍💻" },
-        { question: "skills", answer: "React, TypeScript, Node.js, Firebase, UI/UX" },
-        { question: "experience", answer: "3+ years building modern web apps." },
-        { question: "contact", answer: "📩 johndoe@gmail.com" },
+        { question: "name", answer: "Vikram Singh — Frontend Developer 👨‍💻" },
+        { question: "skills", answer: "React, Nextjs ,TypeScript, Node.js, Firebase, Tailwind CSS" },
+        { question: "experience", answer: "6+ months building modern web apps." },
+        { question: "contact", answer: "📩 vikramsinghkv496@gmail.com" },
         { question: "projects", answer: "You can check all my projects on the portfolio page 🚀" },
     ];
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Lottie from "lottie-react";
 import { motion, useAnimation } from "framer-motion";
 import butterfly1 from "../../assets/json/butterly1.json";

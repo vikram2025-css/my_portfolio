@@ -26,7 +26,7 @@ export default function About() {
 
     const skills = [
         'JavaScript', 'HTML5', 'CSS3', 'React', 'Next.js', 'TypeScript', 'Material-UI', 'Tailwind CSS', 'Shadcn Ui',
-        'Framer Motion', 'Git', 'Jira', 'REST APIs', 'Zustand',
+        'Framer Motion', 'Git', 'GitLab', 'Jira', 'REST APIs', 'Zustand',
         'Redux toolkit'
     ];
 
@@ -78,7 +78,7 @@ export default function About() {
                 {/* Header Section */}
                 <Box sx={{ textAlign: 'center', mb: 8 }}>
                     <Avatar
-                        src="images/profile.webp"
+                        src="images/profile2.webp"
                         alt="Profile"
                         sx={{
                             width: { xs: 120, md: 150 },
